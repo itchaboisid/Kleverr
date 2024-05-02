@@ -7,7 +7,7 @@ const disasterImage = document.getElementById("disasterImage");
 const rotationValues = [
     { minDegree: 0, maxDegree: 30, value: "Earthquake", img: "/assets/images/infographic/earthquake.png" },
     { minDegree: 31, maxDegree: 90, value: "Tsunami", img: "/assets/images/infographic/tsunami.png" },
-    { minDegree: 91, maxDegree: 150, value: "Volcanic Eruption", img: "/assets/images/infographic/volcano.png" },
+    { minDegree: 91, maxDegree: 150, value: "Volcanic Eruption", img: "/assets/images/infographic/eruption.png" },
     { minDegree: 151, maxDegree: 210, value: "Flood", img: "/assets/images/infographic/floods.png" },
     { minDegree: 211, maxDegree: 270, value: "Landslide", img: "/assets/images/infographic/landslide.png" },
     { minDegree: 271, maxDegree: 330, value: "Typhoon", img: "/assets/images/infographic/typhoon.png" },
