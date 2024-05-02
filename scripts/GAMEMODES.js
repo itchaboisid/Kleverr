@@ -317,10 +317,10 @@ function resetTimerAnimation() {
 
     requestAnimationFrame(() => {
         document.querySelectorAll('.countdownTimerVisual').forEach(timerElement => {
-            timerElement.style.animation = 'time 15s steps(1000, start) infinite';
+            timerElement.style.animation = 'time 20s steps(1000, start) infinite';
         });
         document.querySelectorAll('.countdownTimerProgress').forEach(timerMask => {
-            timerMask.style.animation = 'mask 15s steps(1000, start) infinite';
+            timerMask.style.animation = 'mask 20s steps(1000, start) infinite';
         });
     });
 }
