@@ -255,7 +255,7 @@ function resetGame(gameMode = currentActiveGame) {
 
 function timerControl(action, mode = currentActiveGame) {
     timer.forEach(timer => {
-        timer.textContent = "30";
+        timer.textContent = "20";
     });
     switch (action) {
         case 'reset':
@@ -273,7 +273,7 @@ function timerControl(action, mode = currentActiveGame) {
 }
 
 function resetTimer() {
-    timerDuration = 30;
+    timerDuration = 20;
     resetTimerAnimation();
 }
 
