@@ -1246,6 +1246,10 @@ input:disabled ~ .showPasswordContainer > .showPasswordIcon {
     box-sizing: border-box;
 }
 
+#board > #rollDiceButton {
+    margin: 1rem auto;
+}
+
 .boardCell {
     text-align: center;
     box-sizing: border-box;
