@@ -18,8 +18,13 @@ let countdownInterval;
 // ! Timer
 const timer = document.querySelectorAll('.countdownTime');
 const timerBorder = document.querySelector('.countdownTimerVisual');
-var timerElement = document.querySelector('.countdownTimerVisual');
-var timerMask = document.querySelector('.countdownTimerProgress');
+let timerElement = document.querySelector('.countdownTimerVisual');
+let timerMask = document.querySelector('.countdownTimerProgress');
+
+let correctScoreAmount = document.getElementById('correctScore');
+let incorrectScoreAmount = document.getElementById('incorrectScore');
+let correctScore = 0;
+let incorrectScore = 0;
 
 function gameModeSelection() {
     nav.style.display = 'flex';
@@ -60,7 +65,7 @@ function startGameOne() {
     setTimeout(() => {
         LoadingScreen.hide();
         gameOne.style.display = 'flex';
-        displayQuestion();
+        restartGameOne();
         timerControl('start', gameOne);
         currentActiveGame = gameOne;
     }, 1000);
@@ -112,8 +117,8 @@ function startGameFive() {
     setTimeout(() => {
         LoadingScreen.hide();
         gameFive.style.display = 'flex';
-        timerControl('start', gameFive);
         restartGameFive();
+        timerControl('start', gameFive);
         currentActiveGame = gameFive;
     }, 1000);
 }
@@ -128,6 +133,16 @@ function restartGame(gameMode = currentActiveGame) {
     background.style.backgroundColor = '#e2eefec5';
 }
 
+function displayScores() {
+    correctScoreAmount.textContent = correctScore;
+    incorrectScoreAmount.textContent = incorrectScore;
+}
+
+function resetScore() {
+    incorrectScore = 0;
+    correctScore = 0;
+}
+
 function resetQuestions() {
     currentQuestionIndex = 0;
     quesNum = 1;
@@ -140,12 +155,14 @@ function restartGameOne() {
     if (userCoins <= 0) {
         userCoins = 0;
     }
+    resetScore();
     resetQuestions();
     timerControl('reset');
     displayQuestion();
 }
 
 function restartGameTwo() {
+    resetScore();
     currentQuestionIndex_GAMETWO = 0;
     gameQuestionPrompt.style.display = 'none';
     gameBoardContainer.innerHTML = '';
@@ -168,22 +185,25 @@ function restartGameFour() {
     topicValue.innerHTML = `<p></p>`;
 }
 
-function gameIsOver(state, mode) {
-    if (state === true) {
-        showGameOverScreen(true, mode);
-    } else {
-        showGameOverScreen(false, mode);
-    }
+function restartGameFive() {
+    resetScore();
+    timerControl('reset');
+    resetGameFive();
 }
 
-function showGameOverScreen(action, gameMode) {
+function gameIsOver(state, mode) {
+    showGameOverScreen(state, mode);
+}
+
+function showGameOverScreen(state, mode) {
     try {
-        if (action === true) {
-            gameMode.style.display = 'none';
+        if (state) {
+            mode.style.display = 'none';
             gameOverScreen.style.display = 'block';
             displayTip();
+            displayScores();
             gameOverAnimations();
-            timerControl('freeze', gameMode);
+            timerControl('freeze', mode);
         } else {
             gameOverScreen.style.display = 'none';
         }
@@ -226,7 +246,7 @@ function closeGame() {
         timerControl('freeze');
         showGameOverScreen(false);
         gameModeSelection();
-        currentActiveGame = undefined; // Reset the current active game
+        currentActiveGame = undefined;
     }
 }
 
@@ -255,7 +275,7 @@ function resetGame(gameMode = currentActiveGame) {
 
 function timerControl(action, mode = currentActiveGame) {
     timer.forEach(timer => {
-        timer.textContent = "20";
+        timer.textContent = "15";
     });
     switch (action) {
         case 'reset':
@@ -273,7 +293,7 @@ function timerControl(action, mode = currentActiveGame) {
 }
 
 function resetTimer() {
-    timerDuration = 20;
+    timerDuration = 15;
     resetTimerAnimation();
 }
 
@@ -317,10 +337,10 @@ function resetTimerAnimation() {
 
     requestAnimationFrame(() => {
         document.querySelectorAll('.countdownTimerVisual').forEach(timerElement => {
-            timerElement.style.animation = 'time 20s steps(1000, start) infinite';
+            timerElement.style.animation = 'time 15s steps(1000, start) infinite';
         });
         document.querySelectorAll('.countdownTimerProgress').forEach(timerMask => {
-            timerMask.style.animation = 'mask 20s steps(1000, start) infinite';
+            timerMask.style.animation = 'mask 15s steps(1000, start) infinite';
         });
     });
 }
