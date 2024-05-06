@@ -351,6 +351,18 @@
                 <div id="gameOverContentWrapper" class="theme-content light-mode">
                     <img id="celebrationIcon" src="../assets/images/icons/celebration.png" alt="Image failed to load">
                     <h1 id="gameOverHeader">Game has ended!</h1>
+                    <div id="gameScore">
+                        <div id="correctAnswers" class="gameScoreDisplay">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M352 176L217.6 336 160 272"/><rect x="64" y="64" width="384" height="384" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="64"/></svg>
+                            Correct: 
+                            <span id="correctScore"></span>
+                        </div>
+                        <div id="incorrectAnswers" class="gameScoreDisplay">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="64" d="M368 368L144 144M368 144L144 368"/></svg>
+                            Incorrect: 
+                            <span id="incorrectScore"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="gameOverButtonsContainer">
@@ -362,7 +374,7 @@
                 <div id="gameOverFactsContainer">
                     <img id="triviaIcon" src="../assets/images/icons/lightbulb.png" alt="Image failed to load">
                     <div id="gameOverFactsContent">
-                        <p id="trivia">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum numquam esse nihil consectetur dolorum ad magni distinctio, modi placeat officia laboriosam repellat error ducimus. Non molestiae ducimus inventore asperiores, sequi libero maxime eius dignissimos eaque aliquam, provident magni, aperiam eveniet accusantium vero quos! Vel facilis harum reiciendis praesentium a perferendis.</p>
+                        <p id="trivia"></p>
                     </div>
                 </div>
             </div>
