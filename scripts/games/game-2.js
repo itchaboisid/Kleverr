@@ -210,10 +210,12 @@ function checkSelectedAnswer(event) {
     if (selectedAnswer === currentQuestion.correctAnswer) {
         gameQuestionPrompt.style.display = 'none';
         updateCoins(20);
+        correctScore++;
     } else {
         gameQuestionPrompt.style.display = 'none';
         if (userCoins - 10 >= 0) {
             updateCoins(-10);
+            incorrectScore++;
         }
         movePlayerBack();
         updatePlayerPosition(playerCurrentPosition);
