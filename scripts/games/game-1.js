@@ -103,9 +103,11 @@ function checkAnswer(event) {
 
     if (selectedAnswer === currentQuestion.correctAnswer) {
         updateCoins(20);
+        correctScore++;
     } else {
         if (userCoins - 10 >= 0) {
             updateCoins(-10);
+            incorrectScore++;
         }
     }
 
