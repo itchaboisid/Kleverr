@@ -319,7 +319,7 @@
     #gameOverContentWrapper  {
         border-radius: 20px;
         width: 90%;
-        height: 20%;
+        height: 35%;
         margin-top: 3.5rem;
         padding: 0;
     }
@@ -343,6 +343,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        margin-top: 100px;
     }
 
     .gameEndButton {
@@ -361,5 +362,20 @@
 
     #gameOverFactsContainer {
         display: none;
+    }
+
+    #gameScore {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #gameScore > * {
+        margin: 5px auto;
+    }
+    
+    .gameScoreDisplay > * {
+        margin: 5px auto;
     }
 }
