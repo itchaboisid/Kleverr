@@ -37,6 +37,8 @@
     --theme-inactive: var(--grey);
     --theme-warning: var(---red);
     --theme-success: var(--theme-blue);
+    --correct: var(--green);
+    --incorrect: var(--red);
 
     /* ? Shades */
     --black-light: #26242E;
@@ -1238,16 +1240,16 @@ input:disabled ~ .showPasswordContainer > .showPasswordIcon {
     flex-direction: column;
 }
 
+#board > #rollDiceButton {
+    margin: 10px;
+}
+
 #boardCellGrid {
     position: relative;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
     box-sizing: border-box;
-}
-
-#board > #rollDiceButton {
-    margin: 1rem auto;
 }
 
 .boardCell {
@@ -1732,6 +1734,8 @@ input:disabled ~ .showPasswordContainer > .showPasswordIcon {
     display: none;
     position: relative;
     height: 100vh;
+    width: 100%;
+    background-color: var(--white);
 }
 
 .gameOverWrapper {
@@ -1742,13 +1746,12 @@ input:disabled ~ .showPasswordContainer > .showPasswordIcon {
 
 #gameOverContentWrapper  {
     border-radius: 20px;
-    width: 32.45vw;
-    height: 4.20vh;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 7.5rem;
+    flex-direction: column;
+    margin-top: 5.5rem;
     padding: 80px 200px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -1776,6 +1779,8 @@ input:disabled ~ .showPasswordContainer > .showPasswordIcon {
 }
 
 .gameEndButton {
+    color: var(--white);
+    background-color: var(--purple);
     font-family: var(--default-font);
     font-size: var(--medium-font-size);
     font-weight: bold;
@@ -1784,14 +1789,12 @@ input:disabled ~ .showPasswordContainer > .showPasswordIcon {
     border-radius: 10px;
     margin-inline: 30px;
     padding: 2rem 4rem;
-    width: 15.625vw;
+    min-width: 15.625vw;
     outline: none;
     transition: .1s ease;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .gameEndButton:hover {
-    color: var(--white);
     background-color: var(--active);
     cursor: pointer;
 }
@@ -2156,6 +2159,49 @@ input:disabled ~ .showPasswordContainer > .showPasswordIcon {
 
 #counter {
     margin-top: 20px;
+}
+
+/* ! Game Scores */
+#gameScore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 1rem auto;
+}
+
+.gameScoreDisplay {
+    color: var(--white);
+    fill: var(--white);
+    font-family: var(--default-font);
+    font-size: var(--default-font-size);
+    font-weight: bold;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+    margin-inline: 1rem;
+    min-width: 180px;
+    border-radius: 10px;
+}
+
+.gameScoreDisplay > * {
+    margin-inline: 5px;
+}
+
+.gameScoreDisplay > svg {
+    width: 24px;
+    height: 24px;
+}
+
+#correctAnswers {
+    background-color: var(--correct);
+}
+
+#incorrectAnswers {
+    background-color: var(--incorrect);
 }
 
 /* ! Content Not Yet Available Page */
