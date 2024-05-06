@@ -4,14 +4,9 @@ const guessInput = document.getElementById("guessInput");
 const guessButton = document.getElementById("guessButton");
 const passButton = document.getElementById("passButton");
 const wordCountDisplay = document.getElementById("wordCount");
-const words = ["tornado", "typhoon", "earthquake", "floods", "tsunami", "volcano", "fire","emergency","warning","landslide","tsunami","evacuate","disaster","risk","supplies","prevention","calamity","resilience","awareness","forecast","knowledge","safety","rescue","medicine","recovery","casualties","destruction","preparedness","contact"];
+const words = ["tornado", "typhoon", "earthquake", "floods", "tsunami", "volcano", "fire","emergency","warning","landslide","tsunami","evacuate","disaster","risk","supplies","prevention","calamity","resilience","awareness","forecast","knowledge","safety","rescue","medicine","recovery"];
 let currentWordIndex = 0;
 let wordCount = 0;
-
-function restartGameFive() {
-    timerControl('reset');
-    resetGameFive();
-}
 
 function skipCurrentWord() {
     currentWordIndex++;
@@ -40,6 +35,7 @@ function resetGameFive() {
     shuffledWords = words.slice();
     displayScrambledWord();
     wordCountDisplay.textContent = wordCount;
+    guessInput.focus();
 }
 
 function displayScrambledWord() {
@@ -55,20 +51,29 @@ function checkGuess() {
         currentWordIndex++;
         if (currentWordIndex === words.length) {
             showGameOverScreen(true, gameFive);
-        } 
-        else {
+        } else {
             displayScrambledWord();
             guessInput.value = "";
+            correctScore++;
         }
     } else {
         alert("Invalid input. Try again.");
     }
+    guessInput.focus();
 }
+
+window.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        checkGuess();
+    }
+});
 
 function skipWord() {
     skipCurrentWord();
     displayScrambledWord();
     guessInput.value = "";
+    incorrectScore++;
+    guessInput.focus();
 }
 
 guessButton.addEventListener("click", checkGuess);
