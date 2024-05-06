@@ -82,8 +82,10 @@ function checkCardMatch() {
     let secondCardValue = secondCard.getAttribute("data-card-value");
     if (firstCardValue === secondCardValue) {
         handleMatch();
+        correctScore++;
     } else {
         handleMismatch();
+        incorrectScore++;
     }
 
     if (userHasNoCoins()) {
