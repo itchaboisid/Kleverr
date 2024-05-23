@@ -110,7 +110,7 @@ else {
 
 skipDialogueButton.addEventListener('click', redirectToLoginPage);
 function redirectToLoginPage() {
-    window.location.replace('login.php');
+    window.location.href('login.php');
 }
 
 function currentDialogue(page) {
