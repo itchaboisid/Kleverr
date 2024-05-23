@@ -1,0 +1,106 @@
+#game-over-screen {
+    display: none;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.game-over-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#game-over-content-wrapper  {
+    color: var(--black);
+    background-color: var(--white);
+    border-radius: 20px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5.5rem;
+    padding: 80px 200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#celebration-icon {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: -5%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-6deg);
+}
+
+#game-over-header {
+    font-family: var(--default-font);
+    font-size: var(--large-font-size);
+    font-weight: bold;
+}
+
+#game-over-buttons-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-end-button {
+    color: var(--white);
+    background-color: var(--purple);
+    font-family: var(--default-font);
+    font-size: var(--medium-font-size);
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    margin-inline: 30px;
+    padding: 2rem 4rem;
+    min-width: 15.625vw;
+    outline: none;
+    transition: .1s ease;
+}
+
+.game-end-button:hover {
+    background-color: var(--active);
+    cursor: pointer;
+}
+
+#game-over-facts-container {
+    background-color: var(--active);
+    border: 5px solid #98402c;
+    border-radius: 20px;
+    width: 36.45vw;
+    height: 13.889vh;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 3.125rem;
+    padding: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#game-over-facts-content {
+    position: relative;
+}
+
+#game-over-facts-content > p {
+    color: var(--white);
+    font-family: var(--default-font);
+    font-size: var(--medium-font-size);
+    text-align: center;
+    display: flex;
+}
+
+#trivia-icon {
+    position: absolute;
+    width: auto;
+    height: 120px;
+    top: -5%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-6deg);
+    aspect-ratio: 9 / 16;
+}

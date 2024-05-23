@@ -1,0 +1,163 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: var(--orange-gradient);
+}
+
+.login-form {
+    background-color: var(--white);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    max-height: 600px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-form > h1 {
+    color: var(--black);
+    font-family: var(--default-font);
+    margin-bottom: 50px;
+}
+
+.login-form p {
+    font-family: var(--default-font);
+}
+
+.form-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.form-logo-container > img {
+    width: 50%;
+}
+
+.login-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 70%;
+}
+
+.login-options button {
+    margin-bottom: 10px;
+}
+
+.input-fields {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 70%;
+}
+
+.input-fields input {
+    color: var(--black);
+    background: transparent;
+    font-family: var(--secondary-font);
+    font-size: var(--default-font-size);
+    margin-bottom: 10px;
+    border: 2px solid var(--black);
+    border-radius: 3px;
+    outline: none;
+    width: 100%;
+    padding: 10px 10px;
+    transition: .3s ease;
+}
+
+.input-fields label {
+    color: var(--black);
+    background-color: var(--white);
+    font-family: var(--default-font);
+    font-size: var(--default-font-size);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 5px;
+    margin: 10px 5px;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.input-fields input:focus,
+.input-fields input:valid {
+    border-color: var(--active);
+}
+
+.input-fields input:focus ~ label,
+.input-fields input:valid ~ label {
+    color: var(--active);
+    font-size: 14px;
+    top: -16px;
+    left: 0;
+}
+
+.input-fields input:disabled ~ label {
+    color: var(--inactive);
+}
+
+.input-fields input:disabled {
+    color: transparent;
+    border-color: var(--inactive);
+    cursor: not-allowed;
+}
+
+input:disabled ~ .show-password-container > .show-password-icon {
+    fill: var(--inactive);
+    cursor: not-allowed;
+}
+
+.show-password-container {
+    position: relative;
+}
+
+.show-password-icon:hover {
+    fill: var(--active);
+    cursor: pointer;
+}
+
+.show-password-container {
+    position: relative;
+}
+
+.show-password-icon {
+    fill: var(--black);
+    position: absolute;
+    right: 8px;
+    bottom: -12px;
+    background-color: var(--white);
+    padding: 8px;
+    transition: .3s ease;
+}
+
+.show-password-icon:hover {
+    fill: var(--active);
+    cursor: pointer;
+}
+
+.input-status-container {
+    height: 1rem;
+    text-align: left;
+    width: 100%;
+    max-width: 70%;
+}
+
+#input-status {
+    color: var(--red);
+    font-family: var(--default-font);
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+}
