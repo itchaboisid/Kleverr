@@ -8,7 +8,6 @@ let currentQuestionNumber = 1;
 let lastQuestionIndex = null;
 let quesNum = 1;
 let moveToNextQuestionTimeout;
-let GAME_ONE_SCORE = 0;
 let shownQuestionIndices = [];
 
 const questions = [
@@ -92,7 +91,6 @@ function moveToNextQuestion() {
     if (questionsAnswered < MAX_QUESTIONS) {
         displayQuestion();
     } else {
-        ACTIVE_GAME_SCORE = GAME_ONE_SCORE;
         gameIsOver(true);
     }
 }
@@ -127,7 +125,7 @@ function checkAnswer(event) {
 
     if (selectedAnswer === currentQuestion.correctAnswer) {
         clearTimeout(moveToNextQuestionTimeout);
-        GAME_ONE_SCORE++;
+        ACTIVE_GAME_SCORE++;
     } else {
         selectedResultIndicator.setAttribute("name", "close-outline");
         selectedResultIndicator.style.display = 'block';
