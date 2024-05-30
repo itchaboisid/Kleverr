@@ -10,7 +10,6 @@ let lastQuestionIndex_GAMETWO = null;
 let currentQuestionIndex_GAMETWO = 0;
 let playerCurrentPosition = 1;
 let portalPairs = [];
-let GAME_TWO_SCORE = 0;
 
 const gameQuestions = [
     {
@@ -210,7 +209,7 @@ function checkSelectedAnswer(event) {
 
     if (selectedAnswer === currentQuestion.correctAnswer) {
         gameQuestionPrompt.style.display = 'none';
-        GAME_TWO_SCORE++;
+        ACTIVE_GAME_SCORE++;
     } else {
         gameQuestionPrompt.style.display = 'none';
         movePlayerBack();
@@ -291,12 +290,12 @@ function generateCells() {
 }
 
 function rollDice() {
-    rollDiceButton.disabled = true; // Disable the button when dice is rolled
+    rollDiceButton.disabled = true;
     const rollValue = Math.floor(Math.random() * 6) + 1;
     rollDiceButton.textContent = `Moved ${rollValue} steps`;
 
     setTimeout(() => {
-        rollDiceButton.disabled = false; // Re-enable the button after 1 second
+        rollDiceButton.disabled = false;
     }, 1000);
 
     return rollValue;
@@ -311,7 +310,6 @@ function movePlayerAfterDiceRoll() {
         newPosition = maxPosition;
         updatePlayerPosition(newPosition);
         setTimeout(() => {
-            ACTIVE_GAME_SCORE = GAME_TWO_SCORE;
             gameIsOver(true);
             rollDiceButton.textContent = "Move";
         }, 1000);
