@@ -58,15 +58,6 @@ const gameFourQuestions = [
 ];
 
 let GAME_FOUR_QUESTION_INDEX = 0;
-let GAME_FOUR_SCORE = 0;
-
-function restartGameFour() {
-    GAME_FOUR_QUESTION_INDEX = 0;
-    GAME_FOUR_SCORE = 0;
-    gameFourDisplayQuestions();
-    gameFourAnswer.value = '';
-    gameFourAnswer.focus();
-}
 
 function gameFourDisplayQuestions() {
     const currentQuestion = gameFourQuestions[GAME_FOUR_QUESTION_INDEX];
@@ -83,7 +74,6 @@ function gameFourNextQuestion() {
         gameFourDisplayQuestions();
     }
     else {
-        ACTIVE_GAME_SCORE = GAME_FOUR_SCORE;
         gameIsOver(true);
     }
 }
@@ -93,7 +83,7 @@ function checkGameFourAnswer() {
     const userAnswer = gameFourAnswer.value.trim().toLowerCase();
 
     if (userAnswer === correctAnswer.toLowerCase()) {
-        GAME_FOUR_SCORE++;
+        ACTIVE_GAME_SCORE++;
         gameFourNextQuestion();
     } else if (userAnswer === '') {
         clearTimeout(invalidTimeout);
