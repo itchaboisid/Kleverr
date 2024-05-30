@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/root.css">
+    <link rel="stylesheet" href="styles/story.css">
+    <link rel="stylesheet" href="styles/mobile.css">
+    <title>Klever</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://kit.fontawesome.com/85711b228f.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <div id="story-background">
+        <button id="skip-dialogue" type="button" class="skip-dialogue-button">
+            Skip <ion-icon class="fast-forward" name="play-forward-sharp">Dialogue</ion-icon>
+        </button>
+        <div class="dialogue-wrapper">
+            <div class="speech-bubble">
+                <span class="dialogue"></span>
+            </div>
+            <div class="dialogue-controls">
+                <button class="dialogue-buttons" onclick="currentDialogue(1)" id="next-dialogue"><ion-icon name="arrow-forward">Next</ion-icon></button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="scripts/story.js"></script>
+<script src="scripts/animations.js"></script>
+</html>

@@ -1,0 +1,152 @@
+body {
+    font-family: var(--default-font);
+    background-image: url('../assets/images/background/background-animated.gif');
+    background-color: var(--orange);
+}
+
+.menu-buttons {
+    color: var(--white);
+    background-color: transparent;
+    font-size: 100px;
+    font-weight: bold;
+    padding: 1rem 2rem 1rem 10rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    outline: none;
+    border: none;
+}
+
+.menu-buttons:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--white);
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.menu-buttons:hover,
+.menu-buttons:focus,
+.menu-buttons:active {
+    color: var(--active);
+    cursor: pointer;
+}
+
+.menu-buttons:hover:before,
+.menu-buttons:focus:before,
+.menu-buttons:active:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.menu-buttons > ion-icon {
+    opacity: 0;
+    margin-right: 20px;
+    transition: .3s;
+    transform: translateX(-50px);
+}
+
+.menu-buttons:hover > ion-icon,
+.menu-buttons:focus > ion-icon,
+.menu-buttons:active > ion-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-buttons > ion-icon[name='chevron-forward-outline'] {
+    opacity: 0;
+    margin-right: 10px;
+    transition: .3s;
+}
+
+.menu-buttons:hover > ion-icon[name='chevron-forward-outline'],
+.menu-buttons:focus > ion-icon[name='chevron-forward-outline'],
+.menu-buttons:active > ion-icon[name='chevron-forward-outline'] {
+    opacity: 1;
+    animation: startSelectorAnimation 2s infinite;
+}
+
+@keyframes startSelectorAnimation {
+    0% {
+        transform: translateX(-50px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50px);
+    }
+}
+
+#landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#klever-title {
+    margin-bottom: 5rem;
+}
+
+#main-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100vw;
+}
+
+#main-menu-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#menu-tip {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100vw;
+}
+
+#menu-tip-container {
+    color: var(--white);
+    font-family: var(--default-font);
+    font-size: var(--medium-font-size);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 30%;
+    padding: 2rem;
+}
+
+#menu-tip-container > h1 {
+    font-size: var(--large-font-size);
+    margin-bottom: 1rem;
+}
