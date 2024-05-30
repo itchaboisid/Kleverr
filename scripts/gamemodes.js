@@ -60,7 +60,7 @@ function selectGame(mode) {
 function restartGameOne() {
     resetQuestions();
     displayQuestion();
-    GAME_ONE_SCORE = 0;
+    ACTIVE_GAME_SCORE = 0;
 }
 
 function resetQuestions() {
@@ -72,6 +72,7 @@ function resetQuestions() {
 }
 
 function restartGameTwo() {
+    ACTIVE_GAME_SCORE = 0;
     currentQuestionIndex_GAMETWO = 0;
     gameQuestionPrompt.style.display = 'none';
     gameBoardContainer.innerHTML = '';
@@ -82,9 +83,19 @@ function restartGameTwo() {
 }
 
 function restartGameThree() {
+    ACTIVE_GAME_SCORE = 0;
+    cardFinished.style.display = 'none';
     cards.forEach(card => {
         card.classList.remove('flip-card');
     });
+}
+
+function restartGameFour() {
+    GAME_FOUR_QUESTION_INDEX = 0;
+    ACTIVE_GAME_SCORE = 0;
+    gameFourDisplayQuestions();
+    gameFourAnswer.value = '';
+    gameFourAnswer.focus();
 }
 
 function restartGameFive() {
@@ -92,7 +103,7 @@ function restartGameFive() {
     displayScrambledWord();
     guessInput.value = '';
     guessInput.focus();
-    GAME_FIVE_SCORE = 0;
+    ACTIVE_GAME_SCORE = 0;
 }
 
 function resetGame(gameMode = CURRENT_ACTIVE_GAME) {
@@ -134,6 +145,7 @@ function startGameOne() {
         LoadingScreen.hide();
         gameOne.style.display = 'flex';
         CURRENT_ACTIVE_GAME = gameOne;
+        ACTIVE_GAME_SCORE = 0;
         startTimer(10);
         displayQuestion();
     }, 1000);
@@ -191,7 +203,6 @@ function startGameFive() {
 }
 
 const gameOneTimer = document.getElementById('game-one-timer');
-const gameThreeTimer = document.getElementById('game-three-timer');
 const gameFourTimer = document.getElementById('game-four-timer');
 const gameFiveTimer = document.getElementById('game-five-timer');
 let TIME_DURATION = 0;
@@ -211,8 +222,6 @@ function startGameTimer(mode = CURRENT_ACTIVE_GAME) {
             TIME_DURATION = 60;
             startTimer(TIME_DURATION);
             break;
-        default:
-            throw new Error(`Unknown game mode: ${mode}`);
     }
 }
 
@@ -223,17 +232,12 @@ function startTimer(duration, mode = CURRENT_ACTIVE_GAME) {
             gameTimer = gameOneTimer;
             resetTimerAnimation();
             break;
-        case gameThree:
-            gameTimer = gameThreeTimer;
-            break;
         case gameFour:
             gameTimer = gameFourTimer;
             break;
         case gameFive:
             gameTimer = gameFiveTimer;
             break;
-        default:
-            throw new Error(`Unknown game mode: ${mode}`);
     }
 
     gameTimer.textContent = duration;
@@ -242,7 +246,7 @@ function startTimer(duration, mode = CURRENT_ACTIVE_GAME) {
         gameTimer.textContent = duration;
         if (duration <= 0) {
             clearInterval(INGAME_TIMER);
-            gameIsOver(true);
+            gameFinished();
         }
     }, 1000);
 }
