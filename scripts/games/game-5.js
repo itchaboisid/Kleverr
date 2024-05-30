@@ -51,13 +51,11 @@ const words = [
 
 let invalidTimeout;
 let currentWordIndex = 0;
-let GAME_FIVE_SCORE = 0;
 const MAX_QUESTIONS = 10;
 
 function skipCurrentWord() {
     currentWordIndex++;
     if (currentWordIndex === MAX_QUESTIONS) {
-        ACTIVE_GAME_SCORE = GAME_FIVE_SCORE;
         gameIsOver(true);
     } else {
         displayScrambledWord();
@@ -96,9 +94,8 @@ function checkGuess() {
     const currentWord = words[currentWordIndex].word;
     if (guess === currentWord) {
         currentWordIndex++;
-        GAME_FIVE_SCORE++;
+        ACTIVE_GAME_SCORE++;
         if (currentWordIndex === MAX_QUESTIONS) {
-            ACTIVE_GAME_SCORE = GAME_FIVE_SCORE;
             gameIsOver(true);
         } else {
             displayScrambledWord();
