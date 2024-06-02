@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/root.css">
-    <link rel="stylesheet" href="styles/story.css">
+    <link rel="stylesheet" href="styles/landing.css">
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/gamemodes.css">
+    <link rel="stylesheet" href="styles/gameover.css">
+    <link rel="stylesheet" href="styles/tutorial.css">
+    <link rel="stylesheet" href="styles/theme.css">
     <link rel="stylesheet" href="styles/mobile.css">
-    <title>Klever</title>
+    <title>Klever | Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://kit.fontawesome.com/85711b228f.js" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -15,23 +21,439 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-    <div id="story-background">
-        <button id="skip-dialogue" type="button" class="skip-dialogue-button">
-            Skip <ion-icon class="fast-forward" name="play-forward-sharp">Dialogue</ion-icon>
-        </button>
-        <div class="dialogue-wrapper">
-            <div class="speech-bubble">
-                <span class="dialogue"></span>
+    <nav id="nav" class="theme-content light-mode">
+        <div class="nav-buttons-wrapper">
+            <div class="nav-buttons logo" onclick="mainMenu()">
+                <img id="navLogo" src="assets/images/logos/logo.png">
             </div>
-            <div class="dialogue-controls">
-                <button class="dialogue-buttons" onclick="currentDialogue(1)" id="next-dialogue"><ion-icon name="arrow-forward">Next</ion-icon></button>
+            <div class="nav-buttons menu" onclick="mainMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/></svg>
+                <span>Menu</span>
+            </div>
+            <div class="nav-buttons" onclick="aboutPage()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M336 256c-20.56 0-40.44-9.18-56-25.84-15.13-16.25-24.37-37.92-26-61-1.74-24.62 5.77-47.26 21.14-63.76S312 80 336 80c23.83 0 45.38 9.06 60.7 25.52 15.47 16.62 23 39.22 21.26 63.63-1.67 23.11-10.9 44.77-26 61C376.44 246.82 356.57 256 336 256zm66-88zM467.83 432H204.18a27.71 27.71 0 01-22-10.67 30.22 30.22 0 01-5.26-25.79c8.42-33.81 29.28-61.85 60.32-81.08C264.79 297.4 299.86 288 336 288c36.85 0 71 9 98.71 26.05 31.11 19.13 52 47.33 60.38 81.55a30.27 30.27 0 01-5.32 25.78A27.68 27.68 0 01467.83 432zM147 260c-35.19 0-66.13-32.72-69-72.93-1.42-20.6 5-39.65 18-53.62 12.86-13.83 31-21.45 51-21.45s38 7.66 50.93 21.57c13.1 14.08 19.5 33.09 18 53.52-2.87 40.2-33.8 72.91-68.93 72.91zM212.66 291.45c-17.59-8.6-40.42-12.9-65.65-12.9-29.46 0-58.07 7.68-80.57 21.62-25.51 15.83-42.67 38.88-49.6 66.71a27.39 27.39 0 004.79 23.36A25.32 25.32 0 0041.72 400h111a8 8 0 007.87-6.57c.11-.63.25-1.26.41-1.88 8.48-34.06 28.35-62.84 57.71-83.82a8 8 0 00-.63-13.39c-1.57-.92-3.37-1.89-5.42-2.89z"/></svg>
+                <span>About</span>
+            </div>
+            <div class="nav-buttons" onclick="window.open('https://www.facebook.com/profile.php?id=61557039054365', '_blank')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M160 164s1.44-33 33.54-59.46C212.6 88.83 235.49 84.28 256 84c18.73-.23 35.47 2.94 45.48 7.82C318.59 100.2 352 120.6 352 164c0 45.67-29.18 66.37-62.35 89.18S248 298.36 248 324" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="40"/><circle cx="248" cy="399.99" r="32"/></svg>
+                <span>Help</span>
+            </div>
+        </div>
+        <div class="theme">
+            <div class="toggle-theme">
+                <label class="switch-themes">
+                    <input type="checkbox" id="theme">
+                    <span class="theme-slider"></span>
+                </label>
+            </div>
+        </div>
+    </nav>
+    <div id="loadingScreen">
+        <div id="loaderTop"></div>
+        <div id="loadingText">Loading page..</div>
+        <div id="loadingWrapper">
+            <svg id="loadingIcon" viewBox="25 25 50 50">
+                <circle id="loadingProgress" r="20" cy="50" cx="50"></circle>
+            </svg>
+        </div>
+    </div>
+    <div id="landing-page">
+        <div id="main-menu">
+            <div id="main-menu-options">
+                <div id="klever-title">
+                    <img src="assets/images/logos/logo.png"  alt="Image did not load properly." title="Klever">
+                </div>
+                <button id="menu-start-button" class="menu-buttons" onclick="playKlever()">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                    Start
+                </button>
+            </div>
+        </div>
+        <div id="menu-tip">
+            <div id="menu-tip-container">
+                <h1>Tip</h1>
+                <p class="trivia"></p>
             </div>
         </div>
     </div>
+    <div id="game-mode-selection">
+        <div id="game-mode-options-container" class="theme-content light-mode">
+            <div id="game-mode-grid" class="grid">
+                <div class="game-modes" onclick="displayTutorial(gameOne)">
+                    <div class="game-info theme-content light-mode">
+                        <img src="assets/images/modes/land-of-quiz.png" alt="Image did not load properly">
+                        <div class="game-description">
+                            <p>Test your knowledge about landslides! Learn about their causes, effects, and prevention in this interactive quiz.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-modes" onclick="displayTutorial(gameTwo)">
+                    <div class="game-info theme-content light-mode">
+                        <img src="assets/images/modes/quake.png" alt="Image did not load properly">
+                        <div class="game-description">
+                            <p>Plan your escape, prepare for the quake, and conquer the challenge in Quake Escape!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-modes" onclick="displayTutorial(gameThree)">
+                    <div class="game-info theme-content light-mode">
+                        <img src="assets/images/modes/volcano-rush.png" alt="Image did not load properly">
+                        <div class="game-description">
+                            <p>Learn about eruptions, lava types, and volcanic safety.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-modes" onclick="displayTutorial(gameFour)">
+                    <div class="game-info theme-content light-mode">
+                        <img src="assets/images/modes/floods.png" alt="Image did not load properly">
+                        <div class="game-description">
+                            <p>Identify various flood types and learn about their causes and impacts.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-modes" onclick="displayTutorial(gameFive)">
+                    <div class="game-info theme-content light-mode">
+                        <img src="assets/images/modes/typephoon.png" alt="Image did not load properly">
+                        <div class="game-description">
+                            <p>Unscramble typhoon-related words in this exciting game! Perfect for weather buffs and word game lovers!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="game-one" class="theme-background light-mode light-mode-background">
+        <nav>
+            <button class="default-button" onclick="closeGame()">
+                <ion-icon name="exit-outline"></ion-icon>
+                <span>Exit</span>
+            </button>
+        </nav>
+        <div id="gameplay-area">
+            <div class="question-section">
+                <span id="question-number"></span>
+                <p id="question-text"></p>
+            </div>
+            <div class="answers-container">
+                <div class="countdown-timer-container">
+                    <div id="countdown">
+                        <div class="countdown-time" id="game-one-timer"></div>
+                        <svg id="countdown-progress">
+                            <circle r="18" cx="20" cy="20"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <button class="response-option-button">
+                    <i class="fa-solid fa-heart answer-key-icon"></i>
+                    <span class="answer-key"></span>
+                    <ion-icon class="result-indicator" name=""></ion-icon>
+                </button>
+                <button class="response-option-button">
+                    <i class="fa-solid fa-square answer-key-icon"></i>
+                    <span class="answer-key"></span>
+                    <ion-icon class="result-indicator" name=""></ion-icon>
+                </button>
+                <button class="response-option-button">
+                    <i class="fa-solid fa-star answer-key-icon"></i>
+                    <span class="answer-key"></span>
+                    <ion-icon class="result-indicator" name=""></ion-icon>
+                </button>
+                <button class="response-option-button">
+                    <i class="fa-solid fa-diamond answer-key-icon"></i>
+                    <span class="answer-key"></span>
+                    <ion-icon class="result-indicator" name=""></ion-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="game-two" class="theme-background light-mode light-mode-background">
+        <nav>
+            <button class="default-button" onclick="closeGame()">
+                <ion-icon name="exit-outline"></ion-icon>
+                <span>Exit</span>
+            </button>
+        </nav>
+        <div id="board" class="container">
+            <div id="board-cell-grid"></div>
+            <div id="player"></div>
+            <button id="roll-dice-button" class="default-button" onclick="movePlayerAfterDiceRoll()">Move</button>
+        </div>
+        <div id="question-prompt">
+            <div class="question-container">
+                <span id="game-two-question"></span>
+            </div>
+            <div class="question-choices">
+                <button class="question-answers"></button>
+                <button class="question-answers"></button>
+            </div>
+        </div>
+    </div>
+    <div id="game-three" class="theme-background light-mode light-mode-background">
+        <nav>
+            <button class="default-button" onclick="closeGame()">
+                <ion-icon name="exit-outline"></ion-icon>
+                <span>Exit</span>
+            </button>
+        </nav>
+        <div id="game-three-container">
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k1.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/MP.png">
+                        <h1>Mount Pinatubo Eruption (1991)</h1>
+                        <p>The eruption of Mount Pinatubo in 1991 was one of the largest volcanic eruptions of the 20th century. It caused global temperatures to drop by about 0.5°C due to the massive amount of sulfur dioxide.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k2.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/VEI.jpg">
+                        <h1>Volcanic Explosivity Index (VEI)</h1>
+                        <p>It is a scale that measures the explosiveness of volcanic eruptions. The VEI ranges from 0 to 8, with each increment representing a tenfold increase in explosive power. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k1.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/VE.png">
+                        <h1>Volcanic Eruption</h1>
+                        <p>A volcanic eruption occurs when magma (molten rock) from beneath the Earth's crust is expelled through a volcano's vent, accompanied by gases, ash, and other volcanic materials.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k2.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/PY.png">
+                        <h1>Pyroclastic Flow</h1>
+                        <p>A pyroclastic flow is a fast-moving current of hot gas, ash, and volcanic rock that flows down the slopes of a volcano during an explosive eruption. It can reach speeds of over 100 km/h (62 mph) and temperatures of up to 1,000°C.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k1.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/LH.png">
+                        <h1>Lahar</h1>
+                        <p>A lahar is a destructive volcanic mudflow composed of a mixture of volcanic debris and water.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k2.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/LA.jpg">
+                        <h1>Lava</h1>
+                        <p>Lava is molten rock that emerges from a volcano or fissure on the Earth's surface.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k1.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/MG.png">
+                        <h1>Magma</h1>
+                        <p>Magma is molten rock located beneath the Earth's surface. It consists of liquid rock, crystals, and dissolved gases</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k2.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/DC.png">
+                        <h1>Duck, Cover, and Hold</h1>
+                        <p>It is a safety protocol commonly taught during earthquakes. It can an help minimize the risk of injury during an earthquake by providing protection from falling objects</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k1.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/MV.jpg">
+                        <h1>Mayon Volcano</h1>
+                        <p>It is renowned for its near-perfect cone shape, making it a popular subject of photography and tourism. Mayon is one of the most active volcanoes in the Philippines, having erupted over 50 times in the past 400 years.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container theme-content light-mode">
+                <div class="card-wrapper">
+                    <div class="front-card"><img src="assets/images/game-3/k2.png"></div>
+                    <div class="back-card">
+                        <img src="assets/images/game-3/PH.jpg">
+                        <h1>PHIVOLCS</h1>
+                        <p>It monitors active and potentially active volcanoes across the Philippines, including seismic activity, ground deformation, gas emissions, and other signs of volcanic unrest.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="game-three-finish">Finished</div>
+    </div>
+    <div id="game-four" class="theme-background light-mode light-mode-background">
+        <nav>
+            <button class="default-button" onclick="closeGame()">
+                <ion-icon name="exit-outline"></ion-icon>
+                <span>Exit</span>
+            </button>
+        </nav>
+        <div id="game-four-container" class="theme-content light-mode">
+            <h1>Identification</h1>
+            <div class="game-four-timer">Time left - <span id="game-four-timer" class="countdown-time"></span></div>
+            <div id="game-four-question"></div>
+            <div class="input-fields">
+                <input type="text" id="game-four-answer" required>
+            </div>
+            <div class="invalid-input-wrapper">
+                <span id="game-four-invalid-input" class="invalid-input"></span>
+            </div>
+            <div class="choices-container">
+                <button class="default-button game-four-choices"></button>
+                <button class="default-button game-four-choices"></button>
+                <button class="default-button game-four-choices"></button>
+                <button class="default-button game-four-choices"></button>
+            </div>
+            <div id="game-four-choices" class="player-choices">
+                <button class="default-button" id="skip-question-button">Skip</button>
+                <button class="default-button" id="game-four-submit-button">Submit</button>
+            </div>
+        </div>
+    </div>
+    <div id="game-five" class="theme-background light-mode light-mode-background">
+        <nav>
+            <button class="default-button" onclick="closeGame()">
+                <ion-icon name="exit-outline"></ion-icon>
+                <span>Exit</span>
+            </button>
+        </nav>
+        <div id="game-five-container" class="theme-content light-mode">
+            <h1>Word Scramble</h1>
+            <div class="game-five-timer">Time left - <span id="game-five-timer" class="countdown-time"></span></div>
+            <div id="word"></div>
+            <span id="hint"></span>
+            <div class="input-fields">
+                <input type="text" id="guess-input" required>
+            </div>
+            <div class="invalid-input-wrapper">
+                <span id="game-five-invalid-input" class="invalid-input"></span>
+            </div>
+            <div id="game-five-choices">
+                <button class="default-button" id="pass-button">Pass</button>
+                <button class="default-button" id="hint-button">Hint</button>
+                <button class="default-button" id="guess-button">Guess</button>
+            </div>
+        </div>
+    </div>
+    <div id="game-over-screen" class="theme-content light-mode">
+        <h1 id="game-result-header">You've scored..</h1>
+        <div id="game-result"></div>
+        <h2 id="game-result-subheader"></h2>
+
+        <div id="game-over-options">
+            <div id="user-options">
+                <button class="game-over-options" id="back-to-main-menu">Go Back</button>
+                <button class="game-over-options" id="play-again">Play Again</button>
+                <button class="game-over-options" id="exit-game">Main Menu</button>
+            </div>
+        </div>
+
+        <div id="related-guide">
+            <img id="related-guide-image" src="" alt="View related guide">
+            <button id="related-guide-viewer">View guide</button>
+        </div>
+
+        <div id="game-over-tips-wrapper">
+            <span id="game-over-tip" class="trivia"></span>
+        </div>
+    </div>
+    <div id="about-page" class="theme-background light-mode light-mode-background">
+        <h1 id="about-header"></h1>
+        <div id="about-picture-grid">
+            <div class="about-card theme-content light-mode">
+                <img src="assets/images/about/cj.jpg">
+                <h2>Ceriola</h2>
+                <p>Leader</p>
+            </div>
+            <div class="about-card theme-content light-mode">
+                <img src="assets/images/about/br.png">
+                <h2>Bautista</h2>
+                <p>Main Programmer</p>
+            </div>
+            <div class="about-card theme-content light-mode">
+                <img src="assets/images/about/bi.jpg">
+                <h2>Marchadesch</h2>
+                <p>Endorser</p>
+            </div>
+            <div class="about-card theme-content light-mode">
+                <img src="assets/images/about/s.jpg">
+                <h2>Sanidad</h2>
+                <p>Member</p>
+            </div>
+            <div class="about-card theme-content light-mode">
+                <img src="assets/images/about/k.jpg">
+                <h2>Salde</h2>
+                <p>Member</p>
+            </div>
+            <div class="about-card theme-content light-mode">
+                <img src="assets/images/about/pr.jpg">
+                <h2>Peralta</h2>
+                <p>Member</p>
+            </div>
+        </div>
+    </div>
+    <div id="tutorial-page" class="theme-content light-mode">
+        <h1 id="tutorial-header">How to play?</h1>
+        <p id="tutorial-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti numquam officiis eum odit nam officia, eaque quas aliquam atque vero ducimus alias, quia cumque saepe repudiandae aut laudantium eligendi omnis ipsum debitis adipisci repellat? Quibusdam aliquid dolores dolor rerum repellendus quasi consequuntur eum maiores facere odit eos, officia aut ea atque, sed, sit sint laborum rem cum unde doloribus optio corrupti iste adipisci! Optio animi ex cum consequuntur ullam porro sit voluptatem hic, cupiditate ducimus ut suscipit voluptate aperiam ea vel voluptatibus possimus alias. Velit optio et provident fugit ullam aut placeat vitae quis odit expedita? Velit, consectetur earum. Vel!</p>
+        <button id="tutorial-button">Start</button>
+    </div>
 </body>
-<script src="scripts/story.js"></script>
+<script>
+    const landingPage = document.getElementById('landing-page');
+    const gameModeSelection = document.getElementById('game-mode-selection');
+    const about = document.getElementById('about-page');
+    const nav = document.getElementById('nav');
+
+    function playKlever() {
+        landingPage.style.display = 'none';
+        gameModeSelection.style.display = 'block';
+        nav.style.display = 'flex';
+    }
+
+    function aboutPage() {
+        about.style.display = 'flex';
+        gameModeSelection.style.display = 'none';
+        nav.style.display = 'flex';
+    }
+
+    function mainMenu() {
+        closeGame();
+        gameOverScreen.style.display = 'none';
+        gameModeSelection.style.display = 'none';
+        tutorialPage.style.display = 'none';
+        about.style.display = 'none';
+        landingPage.style.display = 'flex';
+        landingPage.style.backgroundImage = 'assets/images/background/background-animated.gif';
+        nav.style.display = 'none';
+    }
+</script>
 <script src="scripts/animations.js"></script>
+<script src="scripts/gamemodes.js"></script>
+<script src="scripts/games/game-1.js"></script>
+<script src="scripts/games/game-2.js"></script>
+<script src="scripts/games/game-3.js"></script>
+<script src="scripts/games/game-4.js"></script>
+<script src="scripts/games/game-5.js"></script>
+<script src="scripts/gameover.js"></script>
+<script src="scripts/theme.js"></script>
 </html>
