@@ -628,4 +628,12 @@
     #game-over-tip {
         font-size: var(--default-font-size);
     }
+
+    #tutorial-header {
+        font-size: var(--medium-font-size);
+    }
+
+    #tutorial-text {
+        font-size: var(--default-font-size);
+    }
 }
