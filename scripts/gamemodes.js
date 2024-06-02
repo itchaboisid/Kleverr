@@ -17,6 +17,32 @@ const gameModeOptions = document.getElementById('game-mode-options-container');
 const gameModeGrid = document.getElementById('game-mode-grid');
 const gameModes = document.querySelectorAll('.game-modes');
 
+const tutorialPage = document.getElementById('tutorial-page');
+const tutorialText = document.getElementById('tutorial-text');
+const tutorialButton = document.getElementById('tutorial-button');
+
+function displayTutorial(mode) {
+    gameModeSelection.style.display = 'none';
+    tutorialPage.style.display = 'flex';
+    tutorialText.textContent = displayTutorialText(mode);
+    tutorialButton.onclick = () => selectGame(mode);
+}
+
+function displayTutorialText(mode) {
+    switch (mode) {
+        case gameOne:
+            return 'Click on one of four choices to answer the question provided. You have 10 seconds to answer each question, the timer will reset after you click any of the choices. The game will end if you fail to answer within 10 seconds or you have finished the game.';
+        case gameTwo:
+            return 'Click on the move button below the board to move, the number of moves given are random. When you land on a text bubble, a question will be displayed with only two choices. If you choose the correct answer, you will stay on your position, otherwise you will move back 1-3 places randomly. There are portals within the board that when you are above it, will teleport you to its pair. If you land back on the portal, it will teleport you back to its pair. The game will finish after you have reached the star tile.';
+        case gameThree:
+            return 'Click on any of the given cards to reveal them, once you have revealed all of them, you can finish the game.';
+        case gameFour:
+            return 'Click on any of the four choices to answer the question, or type one of the answers from the choices then press submit. You can skip the question if you have difficulties answering, however, you will not be awarded any points for that question. You only have 60 seconds to answer all the questions.';
+        case gameFive:
+            return 'Type your answer in the input below the scrambled word. You can press enter to quickly submit your answer. You only have 60 seconds to answer all the questions.'
+    }
+}
+
 const gameOne = document.getElementById('game-one');
 const gameTwo = document.getElementById('game-two');
 const gameThree = document.getElementById('game-three');
@@ -138,6 +164,7 @@ function restartGame() {
 }
 
 function startGameOne() {
+    tutorialPage.style.display = 'none';
     LoadingScreen.show('Preparing Game One..');
     nav.style.display = 'none';
     gameModeSelection.style.display = 'none';
@@ -152,6 +179,7 @@ function startGameOne() {
 }
 
 function startGameTwo() {
+    tutorialPage.style.display = 'none';
     LoadingScreen.show('Preparing Game Two..');
     nav.style.display = 'none';
     gameModeSelection.style.display = 'none';
@@ -164,6 +192,7 @@ function startGameTwo() {
 }
 
 function startGameThree() {
+    tutorialPage.style.display = 'none';
     LoadingScreen.show('Preparing Game Three..');
     nav.style.display = 'none';
     gameModeSelection.style.display = 'none';
@@ -176,6 +205,7 @@ function startGameThree() {
 }
 
 function startGameFour() {
+    tutorialPage.style.display = 'none';
     LoadingScreen.show('Preparing Game Four..');
     nav.style.display = 'none';
     gameModeSelection.style.display = 'none';
@@ -189,6 +219,7 @@ function startGameFour() {
 }
 
 function startGameFive() {
+    tutorialPage.style.display = 'none';
     LoadingScreen.show('Preparing Game Five..');
     nav.style.display = 'none';
     gameModeSelection.style.display = 'none';
